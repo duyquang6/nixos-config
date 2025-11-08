@@ -1,6 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ligt";
@@ -17,10 +18,31 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
+  home.packages = with pkgs; [
+    # utilities 
+    wget
+    btop
+    mpv
+    git
+    fuzzel
+    foot
+    yazi
+
+    # ui
+    xwayland-satellite
+
+    # apps
+    telegram-desktop
+    filezilla
+    thunderbird
+    google-chrome
+
+    # dev
+    inputs.cursor.packages.${system}.cursor
+    jujutsu
+    evil-helix
+    devenv
+    vscode
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -35,6 +57,39 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  programs.fish = {
+    enable = true;
+    plugins = [
+      {
+        name = "fzf-fish";
+        src = pkgs.fishPlugins.fzf-fish.src;
+      }
+    ];
+    functions = {
+      ns = ''
+        nix-shell --run fish
+      '';
+
+      ds = ''
+        devenv shell -- fish
+      '';
+
+      sshf = ''
+        # Force a safe TERM when running under foot
+        if test "$TERM" = foot
+            env TERM=xterm-256color ssh $argv
+        else
+            ssh $argv
+        end
+      '';
+
+      cursor = ''
+        nohup cursor >/dev/null 2>&1 &
+        disown
+      '';
+    };
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -68,7 +123,9 @@
   #  /etc/profiles/per-user/ligt/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "hx";
+    NIXOS_OZONE_WL = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
 
   # Let Home Manager install and manage itself.

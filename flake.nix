@@ -22,10 +22,12 @@
     nixosConfigurations.default = inputs.nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
-        { nix.settings = { 
-	    experimental-features = ["nix-command" "flakes"]; 
-	    trusted-users = [ "root" "ligt" ];
-	  };}
+        {
+          nix.settings = { 
+      	    experimental-features = ["nix-command" "flakes"]; 
+        	  trusted-users = [ "root" "ligt" ];
+      	  };
+	      }
         ./hosts/default/configuration.nix
      	  ./hosts/default/noctalia.nix
      	  inputs.home-manager.nixosModules.default

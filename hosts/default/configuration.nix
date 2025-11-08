@@ -128,11 +128,8 @@
     isNormalUser = true;
     description = "ligt";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      thunderbird
-      google-chrome
-    ];
   };
+  programs.fish.enable = true;
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -143,8 +140,6 @@
 
   # Install browsers
   programs.firefox.enable = true;
-  # install fish 
-  programs.fish.enable = true;
   programs.gpu-screen-recorder.enable = true;
 
   # Allow unfree packages
@@ -153,46 +148,14 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # utilities 
-    wget
-    btop
-    mpv
-    git
-    fuzzel
-    foot
-    xwayland-satellite
-
-    # ui
     capitaine-cursors
-
-    # apps
-    telegram-desktop
-    filezilla
-    yazi
-
-    # dev
-    inputs.cursor.packages.${system}.cursor
-    kitty
-    jujutsu
-    evil-helix
-    devenv
-    vscode
   ];
 
   services.flatpak.enable = true;
 
   # Ensure XWayland is available for X apps under Niri
   programs.xwayland.enable = true;
-  # programs.hyprland.enable = true;
   programs.niri.enable = true;
-
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-
-  environment.variables = {
-    ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    EDITOR = "hx";
-    SUDO_EDITOR = "hx";
-  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
