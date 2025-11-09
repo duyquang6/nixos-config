@@ -14,7 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.quickshell.follows = "quickshell";  # Use same quickshell version
     };
-    cursor.url = "github:duyquang6/cursor-nixos-flake";
   };
 
   outputs = inputs: {

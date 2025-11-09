@@ -27,6 +27,7 @@
     fuzzel
     foot
     yazi
+    fzf
 
     # ui
     xwayland-satellite
@@ -38,11 +39,12 @@
     google-chrome
 
     # dev
-    inputs.cursor.packages.${system}.cursor
+    code-cursor
     jujutsu
     evil-helix
     devenv
     vscode
+    cursor-cli
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -84,10 +86,10 @@
         end
       '';
 
-      cursor = ''
-        nohup cursor >/dev/null 2>&1 &
-        disown
-      '';
+      # cursor = ''
+      #   nohup cursor >/dev/null 2>&1 &
+      #   disown
+      # '';
     };
   };
 
