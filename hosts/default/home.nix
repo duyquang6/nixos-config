@@ -28,6 +28,7 @@
     foot
     yazi
     fzf
+    fastfetch
 
     # ui
     xwayland-satellite
@@ -37,6 +38,7 @@
     filezilla
     thunderbird
     google-chrome
+    discord
 
     # dev
     code-cursor

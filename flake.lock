@@ -1,23 +1,5 @@
 {
   "nodes": {
-    "cursor": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1761914554,
-        "narHash": "sha256-ppL0P61Xj/MAdBgWZlcEDc4F6T4/mX2TMIZHZ1+mu04=",
-        "owner": "duyquang6",
-        "repo": "cursor-nixos-flake",
-        "rev": "0525ac8665df06f4592529f84d0e8a50832aebd8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "duyquang6",
-        "repo": "cursor-nixos-flake",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -39,22 +21,6 @@
       }
     },
     "nixpkgs": {
-      "locked": {
-        "lastModified": 1761672384,
-        "narHash": "sha256-o9KF3DJL7g7iYMZq9SWgfS1BFlNbsm6xplRjVlOCkXI=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "08dacfca559e1d7da38f3cf05f1f45ee9bfd213c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
       "locked": {
         "lastModified": 1762363567,
         "narHash": "sha256-YRqMDEtSMbitIMj+JLpheSz0pwEr0Rmy5mC7myl17xs=",
@@ -116,9 +82,8 @@
     },
     "root": {
       "inputs": {
-        "cursor": "cursor",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
         "quickshell": "quickshell"
       }
